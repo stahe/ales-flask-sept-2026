@@ -1,0 +1,1124 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Introducción paso a paso al framework web [Flask]">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/ales-flask-sept-2026/introduccion.html">
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="acciones-enrutamiento-respuestas.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>1. Introducción - Introducción paso a paso al framework web [Flask]</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Introducción paso a paso al framework web [Flask]";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-introduccion" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Introducción paso a paso al framework web [Flask]" class="md-header__button md-logo" aria-label="Introducción paso a paso al framework web [Flask]" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Introducción paso a paso al framework web [Flask]
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Introducción
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/ales-flask-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Introducción paso a paso al framework web [Flask]" class="md-nav__button md-logo" aria-label="Introducción paso a paso al framework web [Flask]" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Introducción paso a paso al framework web [Flask]
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/ales-flask-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bienvenido
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="introduccion.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-el-papel-de-flask-en-una-aplicacion-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. El papel de Flask en una aplicación web
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-herramientas-utilizadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Herramientas utilizadas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-ejecutar-el-caso-de-estudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Ejecutar el caso de estudio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-ejemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Ejemplos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-contenido-del-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5. Contenido del documento
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="acciones-enrutamiento-respuestas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Acciones, enrutamiento, respuestas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="el-modelo-de-la-accion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. El modelo de la acción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="la-vista-y-su-modelo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. La vista y su modelo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="internacionalizacion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Internacionalización
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ambitos-de-los-datos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Ámbitos de los datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="el-ciclo-de-vida-de-una-solicitud.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. El ciclo de vida de una solicitud
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="autenticacion-y-autorizacion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Autenticación y autorización
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="arquitectura-en-capas-y-acceso-a-datos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Arquitectura en capas y acceso a datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusion-provisional.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Conclusión provisional
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="caso-de-estudio-la-aplicacion-rdvmedecins.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Caso de estudio: la aplicación RdvMedecins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Conclusión
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apendices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Apéndices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="1-introduccion">1. <span style="color: #2e74b5">Introducción</span></h1>
+<p>El PDF del documento está |<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQCLHxhuwQy2QKiuoD7xL-wzAR_EHBkCLYg-ROFp3u_osRo">AQUÍ</a>|.</p>
+<p>Los códigos del documento están |<a href="https://1drv.ms/u/c/f53a919f43d27eb5/IQAejlDLwYXRRpbCPekJeJuoARSzmUYfN97J1GgvprLaZfs">AQUÍ</a>|.</p>
+<p>Este documento es un producto de la IA Claude de Anthropic. Sigue al documento <a href="https://stahe.github.io/ales-springmvc-sept-2026/"><u><span style="color: #0563c1">“Introducción paso a paso al framework web [Spring MVC]</span></u></a>” (2026), que a su vez siguió a los documentos <a href="https://stahe.github.io/ales-aspnetcoremvc-sept-2026/"><u><span style="color: #0563c1">“Introducción paso a paso </span></u><u><span style="color: #0563c1">al framework web [ASP.NET Core MVC]”</span></u></a> y <a href="https://stahe.github.io/ales-nestjs-html-sept-2026/"><u><span style="color: #0563c1">“Introducción paso a paso al framework web [NestJS]”</span></u></a> (2026). Este documento adapta el curso de <em>[Spring MVC]</em> al entorno <em>[Python]</em>:</p>
+<ul>
+<li>el framework <em>[Spring MVC]</em> y el lenguaje <em>[Java]</em> se reemplazan por el framework <em>[Flask]</em> 3.1 y el lenguaje <em>[Python]</em> (versión 3.12 o posterior);</li>
+<li>las vistas <em>[Thymeleaf]</em> se reemplazan por vistas <em>[Jinja2]</em>, el motor de vistas de <em>[Flask]</em>;</li>
+<li>la validación con <em>[Bean Validation]</em> se reemplaza por la biblioteca <em>[Pydantic]</em> (parámetros de las acciones) y por la biblioteca <em>[WTForms]</em> (formularios HTML);</li>
+<li><em>[Spring Security]</em> se reemplaza por unas pocas decenas de líneas de código <em>[Python]</em> escritas para este fin, que se apoyan en las bibliotecas <em>[PyJWT]</em> (los tokens JWT) y <em>[bcrypt]</em> (el hash de contraseñas);</li>
+<li>el ORM <em>[Hibernate],</em> y <em>[Spring Data JPA]</em> se reemplazan por un ORM y <em>[SQLAlchemy]</em>, siempre sobre <em>[MySQL]</em>.</li>
+</ul>
+<p>El documento sigue de cerca la estructura del curso de <em>[Spring MVC]</em>: primero, numerosos proyectos pequeños, cada uno centrado en un concepto específico, seguidos de un caso de estudio completo (una aplicación web para gestionar citas en un consultorio médico) con todos los archivos comentados en detalle. Los ejemplos tienen los mismos números y tratan los mismos temas que en los cursos de <em>[Spring MVC]</em> y <em>[ASP.NET Core MVC]</em>: un lector familiarizado con alguno de esos cursos puede comparar los frameworks ejemplo por ejemplo. Sin embargo, esto no es necesario: este documento se basta a sí mismo y no supone ningún conocimiento previo de <em>[Spring]</em> ni de <em>[ASP.NET]</em>. Los únicos requisitos previos son una comprensión básica de la programación web (el protocolo HTTP, el lenguaje HTML) y del lenguaje <em>[Python]</em> (funciones, clases, diccionarios, módulos). Un curso anterior del autor, <a href="https://stahe.github.io/python-flask-sept-2020/"><u><span style="color: #0563c1">Introducción al lenguaje Python y al framework web Flask mediante ejemplos</span></u></a> (2020), presenta el propio lenguaje <em>[Python]</em>, para quienes necesiten aprenderlo primero.</p>
+<h2 id="11-el-papel-de-flask-en-una-aplicacion-web">1.1. <span style="color: #2e74b5">El papel de Flask en una aplicación web</span></h2>
+<p>Una aplicación web suele construirse en capas, y cada capa se comunica solo con las capas vecinas:</p>
+<p><img src="images/10000000000003D400000142262F8254.png" width="597" height="196" style="width:15.806cm;height:5.193cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003D400000142262F8254.png" /></p>
+<ul>
+<li>la capa web recibe las solicitudes HTTP del navegador y le devuelve páginas HTML. Es la capa que <em>[Flask]</em> nos ayuda a escribir;</li>
+<li>la capa de negocio contiene las reglas de negocio de la aplicación (por ejemplo, “un paciente solo puede tener una cita próxima”). No sabe nada de la web: podría servir igualmente a una aplicación de línea de comandos;</li>
+<li>la capa de acceso a datos (capa <em>[DAO]</em>, por <em>[Data Access Object]</em>) lee y escribe en la base de datos. Usaremos <em>[SQLAlchemy]</em>, un ORM (<em>[Object Relational Mapper]</em>) que asocia las filas de las tablas con objetos <em>[Python]</em>.</li>
+</ul>
+<p>La propia capa web sigue el modelo <em>[MVC]</em> (<em>[Model – View – Controller]</em>):</p>
+<ul>
+<li>el controlador (C) es un conjunto de funciones <em>[Python]</em>, llamadas <strong>acciones</strong>, cada una de las cuales procesa un tipo de solicitud (por ejemplo, <strong><em>[GET /schedule]</em></strong>). Una acción lee los parámetros de la solicitud, invoca la capa de negocio y luego elige la vista que se mostrará;</li>
+<li>el modelo (M) es el conjunto de datos que la acción pasa a la vista;</li>
+<li>la vista (V) es un archivo <em>[Jinja2]</em> (extensión <strong><em>[.html]</em></strong>): una página HTML que contiene expresiones <strong><em>[{{ ... }}]</em></strong> e instrucciones <strong><em>[{% ... %}]</em></strong> (<strong><em>[{% if %}]</em></strong>, <strong><em>[{% for %}]</em></strong>...), que el motor <em>[Jinja2]</em> reemplaza con los datos del modelo.</li>
+</ul>
+<p>Una nota sobre la terminología, para evitar confusiones: la documentación de <em>[Flask]</em> llama a la función que procesa una solicitud <strong>“función de vista”</strong> (“view function”) y al archivo <em>[Jinja2]</em> “plantilla” (“template”). Este documento usa la terminología del modelo <em>[MVC]</em>, así como la de los cursos de <em>[Spring MVC]</em> y <em>[ASP.NET Core MVC]</em> : la función que procesa una solicitud es una <strong>acción</strong>, el archivo <em>[Jinja2]</em> que genera la página es una <strong>vista</strong>, y el término <strong>“plantilla”</strong> designa la vista común de la que heredan las demás páginas (capítulo 4).</p>
+<p>El procesamiento de una solicitud sigue los pasos numerados del diagrama:</p>
+<ul>
+<li>1: El navegador envía una solicitud, por ejemplo HTTP o <strong><em>[GET /schedule?doctorId=1&amp;day=2026-09-26]</em></strong>;</li>
+<li>2: El servidor web recibe la solicitud y se la pasa a la aplicación <em>[Flask]</em>. Durante el desarrollo, este servidor es <em>[Werkzeug]</em>, la biblioteca sobre la que se construye <em>[Flask]</em> ; en producción, será un servidor como <em>[Waitress]</em> o <em>[Gunicorn]</em>. <em>[Werkzeug]</em> compara la ruta solicitada con las rutas de la aplicación y selecciona la acción encargada de manejar esta solicitud: es el <strong>enrutamiento</strong>. Antes de llegar a la acción, la solicitud puede pasar aún por funciones que se ejecutan para todas las solicitudes (<strong><em>[before_request]</em></strong>), que exploraremos en los capítulos siguientes;</li>
+<li>3: La acción pide a la capa de negocio los datos que necesita; si es necesario, la capa de negocio contacta a la capa <em>[DAO]</em>, que consulta la base de datos <em>[MySQL]</em> mediante SQL;</li>
+<li>4: La acción construye el modelo M de la vista e indica al motor <em>[Jinja2]</em> que genere la página (función <strong><em>[render_template]</em></strong>);</li>
+<li>5: La página HTML generada por la vista es la respuesta de la acción, que <em>[Flask]</em> devuelve al navegador.</li>
+</ul>
+<p><em>[Flask]</em> es uno de los dos frameworks web más utilizados en el mundo <em>[Python]</em>, junto con <em>[Django]</em>. Es libre y de código abierto, y funciona en cualquier lugar donde funcione <em>[Python]</em> (<em>[Windows]</em>, <em>[Linux]</em>, <em>[macOS]</em>). Es un <strong>microframework</strong>: su núcleo es deliberadamente pequeño (enrutamiento, solicitudes y respuestas, sesiones, vistas <em>[Jinja2]</em>), y todo lo demás (validación de formularios, acceso a bases de datos, autenticación, etc.) lo resuelven bibliotecas elegidas por el desarrollador. Mientras que <em>[Spring Boot]</em> configura por sí solo un conjunto coherente de componentes, <em>[Flask]</em> permite al desarrollador ensamblar los suyos: la aplicación es más transparente y se puede ver todo lo que ocurre en su interior. Esto es, de hecho, lo que lo convierte en una buena herramienta para aprender: casi nada está oculto. <em>[Flask]</em> puede crear servidores que devuelven JSON a un cliente <em>[JavaScript]</em> (<em>[Angular]</em>, <em>[React]</em>, <em>[Flutter]</em>...) igual que aplicaciones web tradicionales, en las que el servidor genera las páginas HTML y el navegador se limita a mostrarlas. Este documento examina este segundo caso de uso. Dos conceptos de <em>[Python]</em> se repiten en cada página: <strong>los decoradores</strong> (<strong><em>[@app.get(&quot;/&quot;)]</em></strong>, <strong><em>[@app.before_request]</em></strong>...), que asocian una función con un rol, y el paso explícito de los objetos que necesita cada función, mientras que <em>[Spring]</em> los inyecta automáticamente.</p>
+<h2 id="12-herramientas-utilizadas">1.2. <span style="color: #2e74b5">Herramientas utilizadas</span></h2>
+<p>Los ejemplos se escribieron y probaron con las siguientes herramientas (su instalación se describe en el apéndice):</p>
+<ul>
+<li><em>[Python]</em> 3.13 (sirve cualquier versión 3.12 o posterior). El instalador de <em>[Python]</em> también proporciona la herramienta <strong><em>[pip]</em></strong>, que descarga e instala las bibliotecas, y el módulo <strong><em>[venv]</em></strong>, que crea <strong>entornos virtuales</strong> (más adelante veremos qué son);</li>
+<li>el editor <em>[Visual Studio Code]</em>, junto con la extensión <em>[Python]</em> de Microsoft (que también instala la extensión <em>[Pylance]</em>, que analiza el código);</li>
+<li>un navegador reciente (<em>[Chrome]</em>, <em>[Firefox]</em>, <em>[Edge]</em>);</li>
+<li>la herramienta de línea de comandos <em>[curl]</em>, que muestra las respuestas HTTP sin procesar (viene incluida en <em>[Windows]</em> 10 y 11);</li>
+<li>el SGBD [MySQL] (o <em>[MariaDB]</em>), por ejemplo, el de <em>[Laragon]</em> en <em>[Windows]</em>, a partir del capítulo sobre acceso a datos y para el caso de estudio.</li>
+</ul>
+<p>A diferencia del <em>[JDK]</em>, que no contiene <em>[Spring]</em>, <em>[Python]</em> incluye una biblioteca estándar muy completa; pero <em>[Flask]</em> y las demás bibliotecas del documento no vienen incluidas: <strong><em>[pip]</em></strong> las descarga del repositorio <em>[PyPI]</em> (<em>[Python Package Index]</em>) durante la instalación (por lo que ese día debe estar conectado a Internet). Cada proyecto describe sus bibliotecas en un archivo <strong><em>[requirements.txt]</em></strong>. La tabla siguiente las enumera, junto con las versiones utilizadas:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Biblioteca</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Función</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Versión</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[Flask]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">el framework web: enrutamiento, solicitudes, respuestas, sesiones, vistas; incluye <i>[Werkzeug] </i>(solicitudes HTTP, servidor de desarrollo), <i>[Jinja2] </i>(vistas) y <i>[itsdangerous] </i>(firmas)</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">3.1.3</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[asgiref]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">acciones asíncronas (<i><b>[async def]</b></i>), instalado por <i><b>[Flask[async]] </b></i>(ejemplo 03)</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">3.12.1</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[Pydantic]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Enlace y validación de los parámetros de las acciones (capítulo 3)</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">2.13.5</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[email-validator]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Validación de direcciones de correo electrónico, para <i>[Pydantic] </i>y <i>[WTForms]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">2.3.0</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[Flask-WTF]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">los formularios HTML (<i>[WTForms]</i>) y la protección anti-CSRF (capítulo 4)</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">1.3.0</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[Babel]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Formato de fechas e importes según el idioma (capítulos 3 y 4)</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">2.18.0</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[PyJWT]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Tokens JWT (capítulo 8)</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">2.15.0</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[bcrypt]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Hashes de contraseñas (capítulo 8)</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">5.0.0</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[SQLAlchemy]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">ORM, acceso a la base de datos (capítulo 9)</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">2.1.1</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[PyMySQL]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">El controlador <i>[MySQL]</i>, escrito en <i>[Python] </i>(capítulo 9)</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">1.2.3</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[Waitress]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Un servidor web de producción (caso de estudio)</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">3.0.2</div></td></tr></table>
+
+<h2 id="13-ejecutar-el-caso-de-estudio">1.3. <span style="color: #2e74b5">Ejecutar el caso de estudio</span></h2>
+<p><strong>Nota del revisor</strong>: Aconsejo al lector ejecutar de inmediato el caso de estudio tal como se describe a continuación. Una vez que comprenda bien el papel de esta aplicación de citas, pida a su IA favorita que modifique la aplicación de la siguiente manera: a partir de ahora, cada médico podrá:</p>
+<ul>
+<li>definir sus propios horarios de citas entre dos fechas. Esto le permitirá ajustar su agenda según sus necesidades;</li>
+<li>quitar ciertos intervalos horarios del calendario para un día determinado, por ejemplo, si no está disponible por motivos personales;</li>
+</ul>
+<p>La modificación no es sencilla porque implica un cambio en la estructura de la base de datos. Pida a la IA que le proporcione el nuevo código de la aplicación y el script SQL para crear la nueva base de datos. Para ello, deberá entregarle el archivo ZIP con el proyecto completo, así como el script SQL de la base de datos anterior.</p>
+<p>Además, no he revisado el curso creado por <strong>Claude</strong>. Él ya había producido los cursos perfectos [NestJS], [ASP.NET Core MVC] y [Spring MVC]. Supuse que lo mismo ocurriría con este. Si tiene algún problema para entender algo, la solución es siempre la misma: pida a su IA favorita que le explique lo que no entiende. <strong>Claude</strong>, por ejemplo, es muy bueno para esto. Quizá deba “subirle” el ejemplo que no entiende.</p>
+<p><strong>Fin de la nota</strong>.</p>
+<p>El caso de estudio al final de este documento es una aplicación completa. Es probable que los lectores quieran verla en funcionamiento antes de entrar en los detalles del framework: así se ejecuta. Se encuentra en la carpeta <strong><em>[rdvmedecins2-flask]</em></strong>, junto a la carpeta <strong><em>[examples]</em></strong>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>flask-sept-2026/
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>├── examples/
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>└── rdvmedecins2-flask/
+</code></pre></div></td></tr></table></div>
+<p>Debe tener instalados <em>[Python]</em> (versión 3.12 o posterior), <em>[Visual Studio Code]</em> y <em>[MySQL]</em> (consulte los apéndices). Luego:</p>
+<ul>
+<li><strong>Cree la base de datos</strong> <strong><em>[dbrdvmedecins2]</em></strong>  ejecutando el script <strong><em>[rdvmedecins2-flask/database/dbrdvmedecins2.sql]</em></strong>. Con <em>[Laragon]</em>, abra la herramienta <em>[HeidiSQL]</em> (botón Database) y luego ejecute el script desde el menú File / Run SQL. En la línea de comandos, desde la carpeta <strong><em>[rdvmedecins2-flask]</em></strong>:</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>mysql -u root &lt; database/dbrdvmedecins2.sql
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><strong>Abra la carpeta</strong> <strong><em>[rdvmedecins2-flask]</em></strong>  en <em>[Visual Studio Code]</em> (menú File / Open Folder) y luego abra un terminal (menú Terminal / New Terminal);</li>
+<li><strong>cree</strong> el entorno virtual  <strong>de la aplicación</strong>  y <strong>actívelo</strong>. Un entorno virtual es una carpeta (aquí, <strong><em>[.venv]</em></strong>) que contiene una copia del intérprete <em>[Python]</em> y las bibliotecas de un proyecto específico, y solo esas bibliotecas: cada proyecto tiene las suyas, en las versiones que le convienen, sin interferir con otros proyectos de la computadora. En <em>[Windows]</em> (símbolo del sistema o terminal de <em>[Visual Studio Code]</em>):</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>python -m venv .venv
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>.venv\Scripts\activate
+</code></pre></div></td></tr></table></div>
+<p>y en <em>[Linux]</em> y <em>[macOS]</em>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>python3 -m venv .venv
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>source .venv/bin/activate
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>Una vez activado el entorno, el indicador del terminal comienza con <strong><em>[(.venv)]</em></strong>, y los comandos <strong><em>[python]</em></strong> y <strong><em>[pip]</em></strong> son los del entorno. En <em>[Windows]</em>, el terminal <em>[PowerShell]</em> a veces se niega a ejecutar el script de activación (mensaje: “Script execution is disabled on this system”): el comando <strong><em>[Set-ExecutionPolicy -Scope CurrentUser RemoteSigned]</em></strong>, ingresado una sola vez, lo habilita. <em>[Visual Studio Code]</em> detecta el entorno y ofrece usarlo para el proyecto: debe aceptar (también puede seleccionarlo con el comando de Python: Select Interpreter, Ctrl-Shift-P); los terminales que se abran después lo activan automáticamente;</li>
+<li><strong>Instale las</strong> bibliotecas <strong>de la aplicación</strong> en el entorno virtual:</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>pip install -r requirements.txt
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><strong>Verifique la conexión con la base de datos</strong>. La aplicación se conecta a <em>[MySQL]</em> en <strong><em>[localhost]</em></strong>, puerto 3306, con el usuario <strong><em>[root]</em></strong> <strong>sin contraseña</strong> (la configuración predeterminada de <em>[Laragon]</em>). Si su cuenta <strong><em>[root]</em></strong> tiene contraseña, ingrésela en el archivo <strong><em>[config.py]</em></strong> de la aplicación, en la línea <strong><em>[DB_PASSWORD = &quot;&quot;]</em></strong> (por ejemplo, <strong><em>[DB_PASSWORD = &quot;myPassword&quot;]</em></strong>). Para evitar escribir una contraseña en un archivo del proyecto, también puede indicarla en la variable de entorno <strong><em>[FLASK_DB_PASSWORD]</em></strong>, que tiene prioridad sobre el archivo: <strong><em>[set FLASK_DB_PASSWORD=myPassword]</em></strong> en <em>[Windows]</em> (símbolo del sistema), <strong><em>[$env:FLASK_DB_PASSWORD=&quot;myPassword&quot;]</em></strong> en <em>[PowerShell]</em>, <strong><em>[export FLASK_DB_PASSWORD=myPassword]</em></strong> en <em>[Linux]</em> y <em>[macOS]</em>;</li>
+<li><strong>inicie la aplicación</strong> (en <em>[Linux]</em> y <em>[macOS]</em>, <strong><em>[python3]</em></strong> si <strong><em>[python]</em></strong> no existe):</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>python app.py
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>La aplicación lee la base de datos y luego inicia el servidor de desarrollo de <em>[Flask]</em>. La consola muestra los comandos SQL enviados a la base de datos (aquí se incluyeron solo los principales), seguidos de los mensajes del servidor:</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>... INFO sqlalchemy.engine.Engine BEGIN (implicit)
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>... INFO sqlalchemy.engine.Engine SELECT doctors.title, doctors.last_name, doctors.first_name, ... FROM doctors LEFT OUTER JOIN users AS users_1 ON users_1.id = doctors.user ORDER BY doctors.last_name, doctors.first_name
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>... INFO sqlalchemy.engine.Engine ROLLBACK
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>... INFO sqlalchemy.engine.Engine BEGIN (implicit)
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>... INFO sqlalchemy.engine.Engine SELECT clients.title, clients.last_name, clients.first_name, ... FROM clients LEFT OUTER JOIN users AS users_1 ON users_1.id = clients.user ORDER BY clients.last_name, clients.first_name
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>... INFO sqlalchemy.engine.Engine ROLLBACK
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a> * Serving Flask app 'rdvmedecins'
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a> * Debug mode: on
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a>WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a> * Running on http://127.0.0.1:8081
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a>Press CTRL+C to quit
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a> * Restarting with stat
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a> ... (the same SQL commands)
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a> * Debugger is active!
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a> * Debugger PIN: 332-612-699
+</code></pre></div></td></tr></table></div>
+<p>Cada línea de <em>[SQLAlchemy]</em> comienza con la fecha y la hora (reemplazadas aquí por <strong><em>[...]</em></strong>). Muestra que la aplicación ha leído la lista de médicos y clientes (las dos solicitudes SQL), que el servidor escucha en el puerto 8081 en la dirección <strong><em>[127.0.0.1]</em></strong> (es decir, <strong><em>[localhost]</em></strong>), y que se ejecuta en modo <strong>debug</strong>: la aplicación se reinicia automáticamente cada vez que se modifica un archivo <em>[Python]</em> (<strong><em>[Restarting with stat]</em></strong>: el proceso que vigila los archivos reinicia la aplicación, que vuelve a leer la base de datos), y un error inesperado muestra una página de depuración (el “PIN” oculta esta página de la consola). La advertencia recuerda que este servidor está pensado para el desarrollo, no para producción (el caso de estudio explica cómo usar un servidor de producción);</p>
+<ul>
+<li><strong>Abra la URL</strong> <strong><em>[http://localhost:8081]</em></strong> en un navegador:</li>
+</ul>
+<p><img src="images/10000000000003EA000003B5C946CACA.png" width="605" height="573" style="width:16cm;height:15.154cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003EA000003B5C946CACA.png" /></p>
+<ul>
+<li>Inicie sesión con una de las cuentas de demostración, cada una de las cuales usa su nombre de usuario como contraseña: <strong><em>[admin]</em></strong> (administrador), <strong><em>[pelissier]</em></strong>, <strong><em>[tatou]</em></strong>, <strong><em>[dupont]</em></strong> (médicos), <strong><em>[martin]</em></strong>, <strong><em>[durand]</em></strong>, <strong><em>[bistrou]</em></strong>, <strong><em>[german]</em></strong> (pacientes). También debe ingresar los caracteres de la imagen, en mayúsculas o minúsculas.</li>
+</ul>
+<p>Al iniciarse, la aplicación lee la base de datos: si <em>[MySQL]</em> no está accesible, se detiene de inmediato y la consola muestra el motivo al final de un largo mensaje de error (antes de la línea “Background on this error”). Si el mensaje es <strong><em>[Can&#x27;t connect to MySQL server on &#x27;localhost&#x27; ([Errno 111] Connection refused)]</em></strong> (o <strong><em>[[WinError 10061]]</em></strong> en <em>[Windows]</em>), significa que <em>[MySQL]</em> no se ha iniciado; con <strong><em>[Access denied for user &#x27;root&#x27;@&#x27;localhost&#x27;]</em></strong>, significa que la contraseña es incorrecta; con <strong><em>[Unknown database &#x27;dbrdvmedecins2&#x27;]</em></strong>, que el script SQL no se ha ejecutado; con <strong><em>[ModuleNotFoundError: No module named &#x27;flask&#x27;]</em></strong>, que el entorno virtual no está activado (o que las bibliotecas no se han instalado en él); con <strong><em>[Address already in use]</em></strong> (o <strong><em>[Port 8081 is in use by another program]</em></strong>), que el puerto 8081 ya está en uso (por la versión <em>[Spring MVC]</em> de la aplicación, por ejemplo). El archivo <strong><em>[README.md]</em></strong> de la aplicación describe otros escenarios. Detenga la aplicación con <strong><em>[Ctrl-C]</em></strong> en el terminal.</p>
+<p>El caso de estudio al final del documento muestra cómo usar la aplicación y luego explica cada uno de sus archivos.</p>
+<h2 id="14-ejemplos">1.4. <span style="color: #2e74b5">Ejemplos</span></h2>
+<p>Los ejemplos se guardan en la carpeta <strong><em>[examples]</em></strong>, con una subcarpeta por ejemplo:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span>
+<span class="normal"><a href="#__codelineno-7-6">6</a></span>
+<span class="normal"><a href="#__codelineno-7-7">7</a></span>
+<span class="normal"><a href="#__codelineno-7-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>examples/
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>├── 01-structure/
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>├── 02-routing/
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>├── ...
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>├── 28-layers/
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>├── common/
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a>│   └── bootstrap/
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a>└── requirements.txt
+</code></pre></div></td></tr></table></div>
+<p>Cada ejemplo es una pequeña aplicación (<em>[Flask]</em>) que se ejecuta por sí sola. Todos los ejemplos usan las mismas bibliotecas, descritas en el archivo <strong><em>[examples/requirements.txt]</em></strong>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a># las bibliotecas de los ejemplos: pip install -r requirements.txt
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a># (las versiones con las que se escribieron y probaron los ejemplos)
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>Flask[async]==3.1.3
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>Flask-WTF==1.3.0
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>email-validator==2.3.0
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>pydantic==2.13.5
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a>Babel==2.18.0
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>PyJWT==2.15.0
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a>bcrypt==5.0.0
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a>SQLAlchemy==2.1.1
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a>PyMySQL[rsa]==1.2.3
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>línea 3: <em>[Flask]</em>, y lo necesario para escribir acciones asíncronas (<strong>el complemento</strong> <strong><em>[[async]]</em></strong>, que agrega la biblioteca <em>[asgiref]</em>; vea el ejemplo 03);</li>
+<li>líneas 4 a 7: formularios, validación y formato según el idioma;</li>
+<li>líneas 8 y 9: autenticación (capítulo 8);</li>
+<li>líneas 10 y 11: acceso a la base de datos (capítulo 9). El complemento <strong><em>[[rsa]]</em></strong> de <em>[PyMySQL]</em> agrega la biblioteca <em>[cryptography]</em>, necesaria para conectarse a un servidor <em>[MySQL]</em> 8 mediante una cuenta protegida con contraseña.</li>
+</ul>
+<p>Cada línea tiene la forma <strong><em>[name==version]</em></strong>: el operador <strong><em>[==]</em></strong> exige <strong>exactamente</strong> esa versión, con la que se probaron los ejemplos. Se podría ser menos estricto (<strong><em>[Flask&gt;=3.1]</em></strong>: versión 3.1 o posterior); sin embargo, una versión futura de una biblioteca puede cambiar su comportamiento, y un curso debe poder reproducirse exactamente tal como está escrito. Las líneas que comienzan con <strong><em>[#]</em></strong> son comentarios.</p>
+<p>Para ejecutar los ejemplos, primero cree el entorno virtual de los ejemplos, una sola vez, en la carpeta <strong><em>[examples]</em></strong> (consulte el caso de estudio para los detalles):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>python -m venv .venv
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>.venv\Scripts\activate
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>pip install -r requirements.txt
+</code></pre></div></td></tr></table></div>
+<p>(<strong><em>[source .venv/bin/activate]</em></strong> en <em>[Linux]</em> y <em>[macOS]</em>). La carpeta <strong><em>[common/bootstrap]</em></strong> contiene el CSS y el framework <em>[Bootstrap]</em>, compartidos por los ejemplos que dan formato a sus páginas (a partir del ejemplo 15).</p>
+<p>Casi todos los ejemplos tienen la misma estructura. Por ejemplo, la del ejemplo 13:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span>
+<span class="normal"><a href="#__codelineno-10-11">11</a></span>
+<span class="normal"><a href="#__codelineno-10-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>13-first-view/
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>├── controllers/
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>│   ├── __init__.py
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a>│   └── views.py
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a>├── models/
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a>│   ├── __init__.py
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a>│   └── page.py
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a>├── templates/
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a>│   └── views/
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a>│       ├── index.html
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a>│       └── unknown.html
+<a id="__codelineno-10-12" name="__codelineno-10-12"></a>└── app.py
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><strong><em>[app.py]</em></strong>: el archivo de arranque de la aplicación, que es el que se ejecuta; construye la aplicación e inicia el servidor (vea el ejemplo 01);</li>
+<li><strong><em>[controllers]</em></strong>: los controladores, es decir, los archivos que contienen las acciones. Es un <strong>paquete</strong> <em>[Python]</em>: una carpeta que contiene módulos (archivos <strong><em>[.py]</em></strong>), que se pueden importar (<strong><em>[from controllers.views import views]</em></strong>). El archivo <strong><em>[__init__.py]</em></strong>, que aquí está vacío, convierte la carpeta en un paquete (se ejecuta la primera vez que se importa el paquete);</li>
+<li><strong><em>[models]</em></strong>: las clases que describen los modelos (de las acciones y de las vistas);</li>
+<li><strong><em>[templates]</em></strong>: las vistas <em>[Jinja2]</em> (a partir del capítulo 4). <em>[Flask]</em> las busca en esta carpeta, junto al archivo de la aplicación;</li>
+<li><strong><em>[static]</em></strong> (a partir del ejemplo 15): archivos que se envían tal cual al navegador (hojas de estilo, imágenes, scripts <em>[JavaScript]</em>).</li>
+</ul>
+<p>Para ejecutar un ejemplo, abra un terminal en su carpeta (en <em>[Visual Studio Code]</em>: haga clic derecho en la carpeta del ejemplo y seleccione “Open in the built-in terminal”) y active el entorno virtual del ejemplo si aún no está activo (<strong><em>[..\.venv\Scripts\activate]</em></strong> en <em>[Windows]</em>, <strong><em>[source ../.venv/bin/activate]</em></strong> en <em>[Linux],</em> y <em>[macOS]</em>: el entorno se encuentra en la carpeta <strong><em>[examples]</em></strong>, que es la carpeta padre de la carpeta del ejemplo), y escriba:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>python app.py
+</code></pre></div></td></tr></table></div>
+<p>Todos los ejemplos escuchan en el puerto 5000: solo se puede ejecutar uno a la vez. Detenga el servidor con <strong><em>[Ctrl-C]</em></strong> en el terminal. En <em>[macOS]</em>, el puerto 5000 a veces ya está ocupado por el “AirPlay Receiver” del sistema (mensaje <strong><em>[Address already in use]</em></strong>): puede desactivarlo en System Settings / General / AirDrop and Handoff, o cambiar el puerto en el archivo <strong><em>[app.py]</em></strong> del ejemplo (<strong><em>[port=5001]</em></strong>).</p>
+<p>Cuando abre la carpeta <strong><em>[examples]</em></strong> en <em>[Visual Studio Code]</em>, la extensión <em>[Python]</em> sugiere usar el entorno <strong><em>[.venv]</em></strong>: esto permite aprovechar el resaltado de sintaxis, la autocompletación y el reporte de errores en cada archivo. Cada ejemplo se inicia desde su propia carpeta; por eso las importaciones de un ejemplo (<strong><em>[from controllers.views import views]</em></strong>) parten de esa carpeta. <em>[Pylance]</em>, que analiza el código a partir de la carpeta abierta (<strong><em>[examples]</em></strong>), puede entonces subrayar esas importaciones señalándolas como no encontradas: esto no afecta la ejecución. Para que <em>[Pylance]</em> las encuentre, basta con abrir la carpeta del propio ejemplo (menú File / Open Folder). Por último, todos los ejemplos se ejecutan en modo <strong>debug</strong> (vea el ejemplo 01): una aplicación en ejecución se reinicia automáticamente, en aproximadamente un segundo, en cuanto se modifica y guarda uno de sus archivos <em>[Python]</em>.</p>
+<p>Los ejemplos que usan <em>[Bootstrap]</em> lo encuentran en la carpeta <strong><em>[common/bootstrap]</em></strong>, no en la suya: así se garantiza que exista una sola copia de los archivos. Cada uno de estos ejemplos lo invoca mediante la URL <strong><em>[/bootstrap/...]</em></strong>, con unas pocas líneas en su archivo <strong><em>[app.py]</em></strong>. Por ejemplo, <strong><em>[15-layout/app.py]</em></strong>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span>
+<span class="normal"><a href="#__codelineno-12-13">13</a></span>
+<span class="normal"><a href="#__codelineno-12-14">14</a></span>
+<span class="normal"><a href="#__codelineno-12-15">15</a></span>
+<span class="normal"><a href="#__codelineno-12-16">16</a></span>
+<span class="normal"><a href="#__codelineno-12-17">17</a></span>
+<span class="normal"><a href="#__codelineno-12-18">18</a></span>
+<span class="normal"><a href="#__codelineno-12-19">19</a></span>
+<span class="normal"><a href="#__codelineno-12-20">20</a></span>
+<span class="normal"><a href="#__codelineno-12-21">21</a></span>
+<span class="normal"><a href="#__codelineno-12-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="c1"># app.py: la aplicación del ejemplo 15</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">controllers.pages</span><span class="w"> </span><span class="kn">import</span> <span class="n">pages</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="c1"># Bootstrap, compartido por los ejemplos: la carpeta examples/common/bootstrap,</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="c1"># designada a partir de la ubicación de ESTE archivo (y no de la carpeta actual)</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="n">BOOTSTRAP</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">"common"</span> <span class="o">/</span> <span class="s2">"bootstrap"</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a>
+<a id="__codelineno-12-13" name="__codelineno-12-13"></a>
+<a id="__codelineno-12-14" name="__codelineno-12-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_app</span><span class="p">():</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15"></a>    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16"></a>    <span class="n">app</span><span class="o">.</span><span class="n">jinja_env</span><span class="o">.</span><span class="n">trim_blocks</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17"></a>    <span class="n">app</span><span class="o">.</span><span class="n">jinja_env</span><span class="o">.</span><span class="n">lstrip_blocks</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18"></a>    <span class="c1"># un blueprint sin rutas, que solo sirve archivos estáticos: la</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19"></a>    <span class="c1"># carpeta BOOTSTRAP, bajo la URL /bootstrap/...</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20"></a>    <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">Blueprint</span><span class="p">(</span><span class="s2">"bootstrap"</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">,</span> <span class="n">static_folder</span><span class="o">=</span><span class="n">BOOTSTRAP</span><span class="p">,</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21"></a>                                     <span class="n">static_url_path</span><span class="o">=</span><span class="s2">"/bootstrap"</span><span class="p">))</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22"></a>    <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">pages</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>Línea 11: la ruta a la carpeta <strong><em>[common/bootstrap]</em></strong>. <strong><em>[__file__]</em></strong> es la ruta del archivo que se está ejecutando (<strong><em>[app.py]</em></strong>); <strong><em>[Path(...).resolve()]</em></strong> la convierte en una ruta absoluta; <strong><em>[.parent]</em></strong> designa la carpeta que lo contiene (<strong><em>[15-layout]</em></strong>), y <strong><em>[.parent.parent]</em></strong> designa la carpeta padre (<strong><em>[examples]</em></strong>). El operador <strong><em>[/]</em></strong> de un objeto <strong><em>[Path]</em></strong> agrega un elemento a la ruta, con el separador correcto (<strong><em>[\]</em></strong> en <em>[Windows]</em>, <strong><em>[/]</em></strong> en los demás). Así, la ruta no depende de la carpeta actual: el ejemplo encuentra <em>[Bootstrap]</em> sin importar desde dónde se inicie;</li>
+<li>líneas 20 y 21: un <strong>blueprint</strong> es un grupo de rutas almacenado en la aplicación (vea el ejemplo 02). Este blueprint no tiene rutas: sirve únicamente para publicar la carpeta <strong><em>[common/bootstrap]</em></strong> (parámetro <strong><em>[static_folder]</em></strong>) bajo la URL <strong><em>[/bootstrap]</em></strong> (parámetro <strong><em>[static_url_path]</em></strong>). Una página puede usar así la hoja de estilo <strong><em>[/bootstrap/css/bootstrap.min.css]</em></strong>.</li>
+</ul>
+<p>Las demás líneas de este archivo se explicarán en el ejemplo 15.</p>
+<h2 id="15-contenido-del-documento">1.5. <span style="color: #2e74b5">Contenido del documento</span></h2>
+<p>El documento está estructurado de la siguiente manera:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Capítulo</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Contenido</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><b>Ejemplos</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Acciones, enrutamiento, respuestas</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">De la solicitud a la acción: rutas, blueprints, respuestas, redirecciones, servicios compartidos</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">01 a 06</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">El modelo de la acción</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Parámetros de la solicitud: enlace, conversión, validación con <i>[Pydantic]</i>, formularios POST</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">07 a 12</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">La vista y su plantilla</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i>[Jinja2]</i>, plantilla, macros, formularios <i>[WTForms]</i>, validación, PRG, protección anti-CSRF</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">13 a 21</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Internacionalización</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Una aplicación en francés e inglés</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">22</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Ámbitos de datos</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">aplicación, solicitud, sesión, cliente</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">23</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">El ciclo de vida de una solicitud</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Middleware WSGI, <i><b>[before_request]</b></i>, <i><b>[after_request]</b></i>, <i><b>[teardown_request]</b></i>, convertidores, manejadores de errores</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">24</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Autenticación y autorización</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">JWT en una cookie, decoradores, roles, CAPTCHA, límites de intentos</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">25–27</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Arquitectura en capas</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Web / Negocio / DAO con <i>[SQLAlchemy] </i>y <i>[MySQL]</i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">28</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Caso de estudio</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">La aplicación RdvMedecins, explicada archivo por archivo</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">-</div></td></tr></table>
+
+<p>Cada ejemplo introduce solo unos pocos conceptos nuevos, y los capítulos se apoyan unos en otros: lo mejor es leerlos en orden. El caso de estudio, por su parte, recurre a <strong>todos</strong> los conceptos de los capítulos anteriores: siempre que corresponde, su comentario remite al ejemplo donde se presentó el concepto. Los apéndices describen cómo instalar las herramientas: <em>[Python]</em>, <em>[Visual Studio Code]</em> y su extensión <em>[Python]</em>, <em>[MySQL]</em> con <em>[Laragon]</em> y <em>[curl]</em>.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Este tutorial, escrito por la IA <strong>Claude</strong> de Anthropic a petición de <strong>Serge Tahé</strong>, se pone a disposición del público bajo los términos de la
+        <em>licencia Creative Commons Atribución – No Comercial –
+        Compartir Igual 3.0 No adaptada</em>.
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
